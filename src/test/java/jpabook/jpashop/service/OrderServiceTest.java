@@ -35,7 +35,7 @@ class OrderServiceTest {
     @Test
     public void 상품주문() throws Exception {
         //given
-        Member member = createMember();
+        Member member = createMember("회원1", new Address("서울", "강가", "123-123"));
 
         Item book = createBook("시골 JPA", 10000, 10);
 
@@ -56,7 +56,7 @@ class OrderServiceTest {
     @Test
     public void 상품주문_재고수량초과() {
         //given
-        Member member = createMember();
+        Member member = createMember("회원1", new Address("서울", "강가", "123-123"));
         Item item = createBook("시골 JPA", 10000, 10);
 
         int orderCount = 11;
@@ -70,7 +70,7 @@ class OrderServiceTest {
     @Test
     public void 주문취소() throws Exception {
         //given
-        Member member = createMember();
+        Member member = createMember("회원1", new Address("서울", "강가", "123-123"));
         Item item = createBook("시골 JPA", 10000, 10);
 
         int orderCount = 2;
@@ -95,10 +95,10 @@ class OrderServiceTest {
         return book;
     }
 
-    private Member createMember() {
+    private Member createMember(String name, Address address) {
         Member member = new Member();
-        member.setName("회원1");
-        member.setAddress(new Address("서울", "강가", "123-123"));
+        member.setName(name);
+        member.setAddress(address);
         em.persist(member);
         return member;
     }
