@@ -47,4 +47,13 @@ public abstract class Item {
         }
         this.stockQuantity = restStcok;
     }
+
+    /**
+     * 아이템 수정
+     */
+    public void changeItem(String name, int price, int stockQuantity) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
 }
